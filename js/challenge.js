@@ -1,17 +1,18 @@
-let count = 0;
-let intervalID; 
+const clock = document.getElementById('counter');
+const plus = document.getElementById('plus');
+const minus = document.getElementById('minus');
+const pause = document.getElementById('pause');
+const heart = document.getElementById('heart');
+//timer increment
+//start();
 
-const timer = document.getElementById("counter");
-
-document.addEventListener("DOMContentLoaded", function() {
-    clock()
+function start() {
+    setInterval(increase, 1000);
 }
-)
 
-function clock() {
-    intervalID = setInterval(function() {
-        count += 1;
-        timer.TextContent = count;
-    }, 1000);
-    console.log("@@timer", timer)
-};
+function increase() {
+    clock.innerText++;
+}
+
+//manual add
+document.addEventListener()
