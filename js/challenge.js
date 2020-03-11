@@ -14,14 +14,13 @@ const minus = document.getElementById("minus")
 let isPaused = false
 
 
-form.addEventListener("submit", function(e) {    
-  e.preventDefault()
+form.addEventListener("submit", function(e) { 
+  e.preventDefault()   
   listComment()
   clearcommentField()
 })
 
 pause.addEventListener("click", function(e) {
-  e.preventDefault()
   if(!isPaused) {
     pauseTimer()
   } else {
@@ -30,13 +29,11 @@ pause.addEventListener("click", function(e) {
 })
 
 plus.addEventListener("click", function(e) {
-  e.preventDefault() 
   seconds += 1
   counter.innerText = seconds
 })
 
 minus.addEventListener("click", function(e) {
-  e.preventDefault() 
   seconds -= 1
   counter.innerText = seconds
 })
@@ -74,8 +71,11 @@ function incrementSeconds() {
   }
 }
 
+
+//not sure how to keep track of the number of likes for each number. Needs futher work
 function addLike() {
+  let count = 0
   const addLikeLi = document.createElement('li')
-  addLikeLi.innerText = counter.innerText + " has been liked 1 time"
+  addLikeLi.innerText = counter.innerText + ` has been liked ${count + 1} time`
   likes.appendChild(addLikeLi)
 }
