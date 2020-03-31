@@ -2,18 +2,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const plusButton = document.getElementById("plus");
   const minusButton = document.getElementById("minus");
-  var pauseState = false;
+  let pauseState = false;
   const counter = document.getElementById("counter");
-  var i = 0;
-  var ul = document.getElementById("likes");
-  var heart = document.getElementById("heart");
-  var submit = document.getElementById("submit");
-  var commentForm = document.getElementById("comment-form");
-  var comments = document.getElementById("comments");
-  var commentInput = document.getElementById("comment-input");
-  var pauseButton = document.getElementById("pause");
+  let i = 0;
+  // let start = setInterval(incrementPerSecond, 1000);
+  let ul = document.getElementById("likes");
+  let heart = document.getElementById("heart");
+  let submit = document.getElementById("submit");
+  let commentForm = document.getElementById("comment-form");
+  let comments = document.getElementById("comments");
+  let commentInput = document.getElementById("comment-input");
+  let pauseButton = document.getElementById("pause");
 
-  var counterFunc = window.setInterval(function () {
+
+  let counterFunc = window.setInterval(function () {
         i = i + 1;
     document.getElementById("counter").innerHTML = i;
   }, 1000);
@@ -50,6 +52,23 @@ document.addEventListener("DOMContentLoaded", () => {
       counterFunc;
     };
   });
+// function pauseButtonClick(){
+//   if (pauseButton.innerText == "pause"){
+//     pauseButton.innerText = "resume";
+//     plusButton.disabled = true;
+//     minusButton.disabled = true;
+//     hear.disabled = true;
+//     submit.disabled = true;
+//     clearInterval(start);
+//   }else{
+//     pauseButton.innerText = "pause";
+//     plusButton.disabled = false;
+//     minusButton.disabled = false;
+//     hear.disabled = false;
+//     submit.disabled = false;
+//     // startInterval = setInterval(incrementPerSecond(), 1000);
+//   }
+// };
   });
 
 // });
