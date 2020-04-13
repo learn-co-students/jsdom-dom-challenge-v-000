@@ -6,29 +6,48 @@
 
 let counterValue = parseInt(document.getElementById("counter").innerHTML, 10);
 
+let myCounter = setInterval(function() { document.getElementById("counter").innerText =  ++counterValue}, 1000)
 //increment that by one
 
-let plusOne = counterValue + 1;
 
-let minusOne = counterValue - 1;
+//make the timer work -- this works
+//function myStartTime () {document.addEventListener("DOMContentLoaded", () => {
+//  setInterval(function() { document.getElementById("counter").innerText =  ++counterValue}, 1000);
+//});}
 
-//do thata every second on load
-//document.addEventListener("DOMContentLoaded", () => {
-//  setInterval(function counterThing(counterValue){
-//    return counterValue + 1}, 1000);
-//});
+function myStartTime () {document.addEventListener("DOMContentLoaded", () => {
+  myCounter;
+});}
+
+//make the pause button work
+function pauseIt() {document.getElementById("pause").addEventListener("click", function(event) {
+        clearInterval(myCounter);
+});}
 
 //increment timer by one
-document.querySelector("#plus").addEventListener("plus", function(event){
-  document.getElementById("counter").innerText =  plusOne;
-  event.preventDefault();
-}, false);
 
-//makes the comment form work
-//this actually works
+function autoIncrement () {document.getElementById("plus").addEventListener("click", function(event){
+  document.getElementById("counter").innerText =  ++counterValue;
+});}
 
-document.querySelector("#comment-form").addEventListener("submit", function(event) {
+
+//decrement timer
+function autoDecrement() {document.getElementById("minus").addEventListener("click", function(event){
+  document.getElementById("counter").innerText =  --counterValue;
+});}
+
+function commentWork() {document.querySelector("#comment-form").addEventListener("submit", function(event) {
          document.getElementById("list").innerHTML += document.getElementById("comment-input").value;
          document.getElementById("list").innerHTML +=  "<br />";
          event.preventDefault();
-}, false);
+}, false);}
+
+
+autoIncrement();
+myStartTime();
+autoDecrement();
+pauseIt();
+commentWork();
+
+//makes the comment form work
+//this actually works
