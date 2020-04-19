@@ -1,15 +1,16 @@
+function incrementCounter () { counter.innerText = parseInt(counter.innerText) + this; }
+// Note: I need to look up how "this" works. In the function above, "this" is 1 or -1.
+
 document.addEventListener("DOMContentLoaded", function () {
   const counter = document.getElementById('counter');
   const plus = document.getElementById('plus');
-  // const minus = document.getElementById('minus');
+  const minus = document.getElementById('minus');
   
+  plus.addEventListener('click', incrementCounter.bind(1), false);
+  minus.addEventListener('click', incrementCounter.bind(-1), false);
   
-  plus.addEventListener('click', incrementCounter());
-  // minus.addEventListener('click', incrementCounter(-1));
-  
-});
+}, false);
 
-function incrementCounter () { counter.innerText = parseInt(counter.innerText) + 1; }
 
 /* I think I should do it in this order:
   1. Implement the + and - buttons.
