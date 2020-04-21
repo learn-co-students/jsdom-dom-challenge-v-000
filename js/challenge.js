@@ -55,13 +55,43 @@ document.addEventListener("DOMContentLoaded", function () {
     // Should I iterate through those likeMessages and try to find one that starts with counterNumber?
     // Or is it better to use querySelector and give each new likeMessage a unique piece of data,
     // like <li data-num = "28"> ?
-    const likeMessage = document.createElement('li');
-    likeMessage.textContent = `${counterNumber} has been liked so-and-so times`;
+    // Update: I can't use find() on a NodeList, only an array. But I can convert it to an array!
 
-    likes.appendChild(likeMessage);
-  }, false);
+    // Solution 1: 
+    // const likeMessages = Array.from(likes.querySelectorAll('li'));
+    // let likeMessage = likeMessages.find( message => message.textContent.startsWith(counterNumber) );
+
+    // Solution 2 (I think this one is cleaner):
+    let likeMessage = likes.querySelector(`li[data-counter="${counterNumber}"]`);
+    let timesLiked; // Solutions 1 and 2 use this.
+
+    if (likeMessage == undefined) { // The counterNumber has never been liked.
+      // Build the pieces of the likeMessage.
+      likeMessage = document.createElement('li');
+      timesLiked = document.createElement('span');
+      timesLiked.textContent = 1;
+      
+      // Solution 2 adds this:
+      likeMessage.setAttribute('data-counter', counterNumber);
+
+      // Put together the likeMessage.
+      likeMessage.textContent = `${counterNumber} has been liked `;
+      likeMessage.appendChild(timesLiked);
+      likeMessage.innerHTML += " time";
+
+      likes.appendChild(likeMessage);
+    }
+    else { // counterNumber has been liked at least once.
+      timesLiked = likeMessage.querySelector('span');
+      timesLiked.textContent = parseInt(timesLiked.textContent) + 1;
+      
+      if (likeMessage.innerHTML.endsWith("time")) {
+        likeMessage.innerHTML = likeMessage.innerHTML.concat("s");
+      }
+    }
+  }, false); // End of heart.addEventListener
   
-}, false);
+}, false); // End of document.addEventListener
 
 
 /* I think I should do it in this order:
