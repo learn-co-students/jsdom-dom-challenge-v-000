@@ -12,6 +12,24 @@
 */
 
 document.addEventListener("DOMContentLoaded", function () {
+  function incrementCounter (inc) {
+    counterNumber += inc;
+    counter.innerText = counterNumber;
+  }
+
+  function disableButtons (trueOrFalse) {
+    // Enable or disable all buttons except the pause button 
+    // (I can still write a comment, but not submit it)
+    minus.disabled = trueOrFalse;
+    plus.disabled = trueOrFalse;
+    heart.disabled = trueOrFalse;
+    submitButton.disabled = trueOrFalse;
+  }
+
+  function startTimer () { // Increment the counter by 1 every 1000ms
+    return setInterval(incrementCounter, 1000, 1);
+  }
+
   // Counter-related elements
   const counter = document.getElementById('counter');
   let counterNumber = parseInt(counter.innerText);
@@ -22,15 +40,28 @@ document.addEventListener("DOMContentLoaded", function () {
   const commentForm = document.getElementById('comment-form');
   const commentInput = document.getElementById('comment-input');
   const list = document.getElementById('list');
+  const submitButton = document.getElementById('submit');
 
   // Heart-related elements
   const heart = document.getElementById('heart');
   const likes = document.querySelector('ul.likes');
 
-  function incrementCounter (inc) {
-    counterNumber += inc;
-    counter.innerText = counterNumber;
-  }
+  // Timer-related elements
+  const pauseButton = document.getElementById('pause');
+  let timer = startTimer();
+
+  pauseButton.addEventListener('click', function () {
+    if (pauseButton.textContent == " pause ") { // Pause the timer, disable buttons
+      clearInterval(timer);
+      disableButtons(true);
+      pauseButton.textContent = "resume";
+    }
+    else { // Resume the timer, enable buttons
+      timer = startTimer();
+      disableButtons(false);
+      pauseButton.textContent = " pause ";
+    }
+  }, false);
 
   plus.addEventListener('click', function () { incrementCounter(1) }, false);
   minus.addEventListener('click', function () { incrementCounter(-1) }, false);
@@ -96,11 +127,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* I think I should do it in this order:
   1. Implement the + and - buttons. CHECK!
-  2. Implement the heart button.
+  2. Implement the heart button. CHECK! (Also, I think Solution 2 is cleaner.)
     a. This should add a list item: (counter number) has been liked (x) times.
     b. It should NOT add an additional list item if the user likes the same number multiple times. Instead, increment (x).
   3. Implement the "leave a comment" feature. Check!
-  4. Implement the timer.
+  4. Implement the timer. Check!
   5. Implement the pause button, which stops the timer, heart, counter buttons, and submit (not the actual writing of a comment).
-    a. It should toggle between "pause" and "resume". 
+    a. It should toggle between "pause" and "resume".
+  ^^^ Check!
 */
