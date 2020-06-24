@@ -15,7 +15,10 @@ function startDOMChallenge(){
   }
 
   function increaseCounter (){
-    return sec++;
+    return ++sec;
+  }
+  function decreaseCounter(){
+    return sec >0? --sec : 0 ;
   }
 
   function updateCounter(){
@@ -24,9 +27,17 @@ function startDOMChallenge(){
 
 
   document.getElementById("heart").addEventListener("click", ()=>{
-    li = document.createElement("li")
-    li.innerText = `${sec} has been clicked`;
-    document.querySelector("ul.likes").appendChild(li);
+    if (document.getElementById(sec)){
+      li = document.createElement("li");
+      li.setAttribute("id", sec);
+      li.innerText = `${sec} has been clicked`;
+      document.querySelector("ul.likes").appendChild(li);
+    }else{
+      li = document.createElement("li");
+      li.setAttribute("id", sec);
+      li.innerText = `${sec} has been clicked`;
+      document.querySelector("ul.likes").appendChild(li);
+    }
   });
 
   document.getElementById("pause").addEventListener("click", ()=>{
@@ -50,34 +61,12 @@ function startDOMChallenge(){
   document.getElementById("plus").addEventListener("click", ()=>{
     stopCounter();
     document.getElementById("counter").innerText = increaseCounter();
-    setInterval(updateCounter, 1000);
+    startCounter();
   });
-
-  document.getElementById("minus").addEventListener("click", (event)=>{
-    document.getElementById("counter").innerText;
+  document.getElementById("minus").addEventListener("click", ()=>{
+    stopCounter();
+    document.getElementById("counter").innerText = decreaseCounter();
+    startCounter();
   });
 
 }
-// function startCounter(){
-//   let secMonitoring= setInterval(function(){
-//     document.getElementById("counter").innerText = sec++;
-//   }, 1000);
-// }
-// function likesRegistration(){
-//   document.getElementById("heart").addEventListener("click", createLikesLi);
-// }
-// function createLikesLi(){
-//   li = document.createElement("li")
-//   li.innerText = `${sec} has been clicked`;
-//   document.querySelector("ul.likes").appendChild(li);
-// }
-// function pauseRegistration(){
-//   document.getElementById("pause").addEventListener("click", pauseCounter);
-// }
-// function pauseCounter(){
-//   let list = document.getElementsByTagName("button");
-//   for (let button of list){
-//     button.disabled=true;
-//   }
-//
-// }
