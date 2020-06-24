@@ -1,6 +1,5 @@
-document.addEventListener("DOMContentLoaded", startDOMChallenge);
+document.addEventListener("DOMContentLoaded", ()=>{
 
-function startDOMChallenge(){
   let sec=0;
 
   let secMonitoring;
@@ -27,10 +26,10 @@ function startDOMChallenge(){
 
 
   document.getElementById("heart").addEventListener("click", ()=>{
-    li = document.createElement("li");
-    li.setAttribute("id", sec);
-    li.innerText = `${sec} has been clicked 1 time`;
-    document.querySelector("ul.likes").appendChild(li);
+    let heartLi = document.createElement("li");
+    //heartLi.setAttribute("id", sec);
+    heartLi.innerText = `${sec} has been clicked 1 time`;
+    document.querySelector("ul.likes").appendChild(heartLi);
   });
 
   document.getElementById("pause").addEventListener("click", ()=>{
@@ -49,17 +48,31 @@ function startDOMChallenge(){
         button.disabled == true? button.disabled = false : button.disabled = true ;
       }
     }
-
   });
+
   document.getElementById("plus").addEventListener("click", ()=>{
     stopCounter();
     document.getElementById("counter").innerText = increaseCounter();
     startCounter();
   });
+
   document.getElementById("minus").addEventListener("click", ()=>{
     stopCounter();
     document.getElementById("counter").innerText = decreaseCounter();
     startCounter();
   });
 
-}
+  document.getElementById("submit").addEventListener("click", (event)=>{
+    let comment = document.getElementById("comment-input").value;
+    if (comment.trim() !=""){
+      let list = document.getElementById("list");
+      let commentLi = document.createElement("li");
+      commentLi.innerText = comment;
+      list.appendChild(commentLi);
+      document.getElementById("comment-input").value ="";
+    }else{
+      alert("Comment field cannot be blank!");
+    }
+    event.preventDefault();
+  });
+});
