@@ -27,17 +27,10 @@ function startDOMChallenge(){
 
 
   document.getElementById("heart").addEventListener("click", ()=>{
-    if (document.getElementById(sec)){
-      li = document.createElement("li");
-      li.setAttribute("id", sec);
-      li.innerText = `${sec} has been clicked`;
-      document.querySelector("ul.likes").appendChild(li);
-    }else{
-      li = document.createElement("li");
-      li.setAttribute("id", sec);
-      li.innerText = `${sec} has been clicked`;
-      document.querySelector("ul.likes").appendChild(li);
-    }
+    li = document.createElement("li");
+    li.setAttribute("id", sec);
+    li.innerText = `${sec} has been clicked 1 time`;
+    document.querySelector("ul.likes").appendChild(li);
   });
 
   document.getElementById("pause").addEventListener("click", ()=>{
