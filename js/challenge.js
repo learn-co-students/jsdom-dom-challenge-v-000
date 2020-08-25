@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let comments = document.getElementById("comment-form");
   let list = document.getElementById("list");
   let submit = document.getElementById("submit");
+  let buttons = document.querySelectorAll("button");
   let running = true;
 
   const counterFunction = () => counter.innerHTML = parseInt(counter.innerHTML) + 1
@@ -33,12 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   heart.addEventListener('click', event => {
     const likesList = document.querySelector(".likes")
-
     const targetLi = likesList.querySelector(`[data-count="${counter.innerHTML}"]`)
 
     if(!!targetLi) {
       let targetSpan = targetLi.querySelector("span");
-      targetSpan.innerHTML = parseInt(targetSpan.innerHTML)+1;
+      targetLi.innerHTML = `${counter.innerHTML} has been liked <span>${parseInt(targetSpan.innerHTML)+1}</span> times.`
     }else{
       likesList.innerHTML += `<li data-count="${counter.innerHTML}"> ${counter.innerHTML} has been liked <span>1</span> time.</li>`;
     }
@@ -49,22 +49,24 @@ document.addEventListener("DOMContentLoaded", () => {
     timer(running)
     if (running) {
       pause.innerHTML = "Pause";
-      minus.disabled = false;
-      plus.disabled = false;
-      heart.disabled = false;
-      submit.disabled = false;
+      toggleButtons(!running);
     }else{
       pause.innerHTML = "Resume";
-      minus.disabled = true;
-      plus.disabled = true;
-      heart.disabled = true;
-      submit.disabled = true;
+      toggleButtons(!running);
     }
   });
 
   comments.addEventListener('submit', event => {
     let input = document.querySelector("#comment-input").value;
-    list.innerHTML +=  `<p>${input}</p>`;
+    list.innerHTML += `<p>${input}</p>`;
     event.preventDefault();
   })
+
+  const toggleButtons = (status) => {
+    buttons.forEach(button => {
+      if (button !== pause) {
+        button.disabled = status;
+      }
+    })
+  }
 });
