@@ -12,16 +12,7 @@ let timerInterval = setInterval(function () {
     secondsLeft++;
     timerElement.textContent = secondsLeft;
 }, 1000);
-    // if (secondsLeft <= 0) {
-    //     clearInterval(timerInterval);
-    // }
-
-    // if (!isPaused) {
-    //     time++;
-    //     output.text("Seconds: " + time);
-    // }
-// }, 1000);
-
+    
 upButton.addEventListener("click", () => {
     console.log("Worked")
     secondsLeft = parseInt(secondsLeft) + 1;
@@ -54,18 +45,13 @@ pauseButton.addEventListener("click", () => {
         likeButton.removeAttribute("disabled")
         pauseButton.innerText = "pause";
     }
-        
-    // pauseButton.textContent = secondsLeft;
-    // timerElement.textContent = secondsLeft;
 });
 
-// downButton.addEventListener("click", () => {
+likeButton.addEventListener("click", function() {
+    console.log("Worked")
+    let likes = document.querySelector(".likes")
+    num = parseInt(likes.innerText) 
+    num += 1
+    likes.innerText = num
 
-// });
-// increment = setInterval(function () {
-//     secondsLeft--;
-//     timerElement.textContent = secondsLeft;
-
-//     if (secondsLeft <= 0) {
-//         clearInterval(timerInterval);
-//     }
+});
