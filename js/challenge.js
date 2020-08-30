@@ -10,6 +10,7 @@ const listComments = document.getElementById("list")
 let likeCount = 0;
 let secondsLeft = 0;
 let isPaused = false
+// let responce = "";
 
 
 let timerInterval = setInterval(function () {
