@@ -4,6 +4,9 @@ const upButton = document.getElementById("plus");
 const downButton = document.getElementById("minus");
 const pauseButton = document.getElementById("pause")
 const likeButton = document.getElementById("heart")
+const submitElement = document.getElementById("submit")
+const listComments = document.getElementById("list")
+
 let likeCount = 0;
 let secondsLeft = 0;
 let isPaused = false
@@ -54,5 +57,13 @@ likeButton.addEventListener("click", function() {
     likeCount += 1;
     likes.innerText = likeCount
     console.log(this.innerText)
+
+});
+
+submitElement.addEventListener("click", function () {
+    event.preventDefault();
+    console.log("Worked");
+    var response = "Wow, what a fun game this is.";
+    listComments.textContent = response;
 
 });
