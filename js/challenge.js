@@ -4,6 +4,7 @@ const upButton = document.getElementById("plus");
 const downButton = document.getElementById("minus");
 const pauseButton = document.getElementById("pause")
 const likeButton = document.getElementById("heart")
+let likeCount = 0;
 let secondsLeft = 0;
 let isPaused = false
 
@@ -49,9 +50,9 @@ pauseButton.addEventListener("click", () => {
 
 likeButton.addEventListener("click", function() {
     console.log("Worked")
-    let likes = document.querySelector(".likes")
-    num = parseInt(likes.innerText) 
-    num += 1
-    likes.innerText = num
+    let likes = document.querySelector(".likes") 
+    likeCount += 1;
+    likes.innerText = likeCount
+    console.log(this.innerText)
 
 });
