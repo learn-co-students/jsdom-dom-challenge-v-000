@@ -15,5 +15,8 @@ let timerInterval = setInterval(function () {
     timerElement.textContent = secondsLeft;
 }, 1000);
 
-
-
+upButton.addEventListener("click", () => {
+    console.log("Worked")
+    secondsLeft = parseInt(secondsLeft) + 1;
+    timerElement.textContent = secondsLeft;
+});
