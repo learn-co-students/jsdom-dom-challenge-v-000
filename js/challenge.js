@@ -6,6 +6,7 @@ window.addEventListener('load', (event) => {
   setClock()
 })
 
+
 document.getElementById("plus").addEventListener("click", plus)
 document.getElementById("minus").addEventListener("click", minus)
 document.getElementById("heart").addEventListener("click", like)
@@ -13,34 +14,42 @@ document.getElementById("pause").addEventListener("click", pause)
 document.getElementById("submit").addEventListener("click", comment)
 
 
-
 function setClock() {
- console.log("innerHTML:" + counterDisplay.innerHTML)
-  setTimeout(function() {
+ //console.log("innerHTML:" + counterDisplay.innerHTML)
   //your code to be executed after 1 second
-   if (counterDisplay.innerHTML < 10) {
-       //newCounterDisplay 
+  console.log("clock")
+  timer = setTimeout(function() {
+   if (counterDisplay.innerHTML < 100) {
      let newCounterDisplay = ++counterDisplay.innerHTML 
        counterDisplay.innerHTML = newCounterDisplay
        setClock()
      } else { 
     console.log("fin")
     }
-}, 1000);
+ }, 1000);
 }
 
-	//listen for button click
-	//increment innerHTML
-	//set innerHTML
 function plus() {
 	let newCounterDisplay = ++counterDisplay.innerHTML 	
 	counterDisplay.innerHTML = newCounterDisplay
 }
 
 function minus() {
-	console.log("hello")
    let decrementedCounterDisplay = --counterDisplay.innerHTML 	
    decrementedCounterDisplay.innerHTML = newCounterDisplay
+}
+
+function pause() {
+	console.log("pause")
+	let pauseButton = document.getElementById("pause").innerHTML
+	if (pauseButton == " pause ") {
+			clearTimeout(timer)
+			document.getElementById("pause").innerHTML = " resume "
+	} else {
+		    document.getElementById("pause").innerHTML = " pause "
+           	setClock()
+            console.log("resume")
+	}
 }
 
 function like() {
