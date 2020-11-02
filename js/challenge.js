@@ -13,6 +13,11 @@ document.getElementById("heart").addEventListener("click", like)
 document.getElementById("pause").addEventListener("click", pause)
 document.getElementById("submit").addEventListener("click", comment)
 
+const commentDiv = document.getElementById("list")
+const commentList =  document.createElement("li")
+const commentInput = document.getElementById("comment-input")
+const commentText = commentInput.value 
+const commentNode = document.createTextNode(commentText)
 
 function setClock() {
  //console.log("innerHTML:" + counterDisplay.innerHTML)
@@ -60,7 +65,9 @@ function like() {
 }
 
 function comment() {
-
+	  event.preventDefault()
+      let listItem = commentDiv.appendChild(commentList)
+      listItem.appendChild(commentNode)
 }
 
 
