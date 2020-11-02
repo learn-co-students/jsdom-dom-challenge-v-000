@@ -8,6 +8,10 @@ window.addEventListener('load', (event) => {
 
 document.getElementById("plus").addEventListener("click", plus)
 document.getElementById("minus").addEventListener("click", minus)
+document.getElementById("heart").addEventListener("click", like)
+document.getElementById("pause").addEventListener("click", pause)
+document.getElementById("submit").addEventListener("click", comment)
+
 
 
 function setClock() {
@@ -38,3 +42,16 @@ function minus() {
    let decrementedCounterDisplay = --counterDisplay.innerHTML 	
    decrementedCounterDisplay.innerHTML = newCounterDisplay
 }
+
+function like() {
+	//set starting number
+    //increment number
+	//add ul digit to element
+
+}
+
+function comment() {
+
+}
+
+
