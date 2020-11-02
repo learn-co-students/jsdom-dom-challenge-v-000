@@ -7,6 +7,8 @@ window.addEventListener('load', (event) => {
 })
 
 document.getElementById("plus").addEventListener("click", plus)
+document.getElementById("minus").addEventListener("click", minus)
+
 
 function setClock() {
  console.log("innerHTML:" + counterDisplay.innerHTML)
@@ -31,6 +33,8 @@ function plus() {
 	counterDisplay.innerHTML = newCounterDisplay
 }
 
-//function minus() {
-
-//}
+function minus() {
+	console.log("hello")
+   let decrementedCounterDisplay = --counterDisplay.innerHTML 	
+   decrementedCounterDisplay.innerHTML = newCounterDisplay
+}
