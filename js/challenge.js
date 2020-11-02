@@ -6,6 +6,8 @@ window.addEventListener('load', (event) => {
   setClock()
 })
 
+document.getElementById("plus").addEventListener("click", plus)
+
 function setClock() {
  console.log("innerHTML:" + counterDisplay.innerHTML)
   setTimeout(function() {
@@ -20,3 +22,15 @@ function setClock() {
     }
 }, 1000);
 }
+
+	//listen for button click
+	//increment innerHTML
+	//set innerHTML
+function plus() {
+	let newCounterDisplay = ++counterDisplay.innerHTML 	
+	counterDisplay.innerHTML = newCounterDisplay
+}
+
+//function minus() {
+
+//}
