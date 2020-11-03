@@ -13,9 +13,6 @@ document.getElementById("heart").addEventListener("click", like)
 document.getElementById("pause").addEventListener("click", pause)
 document.getElementById("submit").addEventListener("click", comment)
 
-const commentDiv = document.getElementById("list")
-const commentunorderedList =  document.createElement("ul")
-
 function setClock() {
  //console.log("innerHTML:" + counterDisplay.innerHTML)
   //your code to be executed after 1 second
@@ -58,16 +55,17 @@ function like() {
 	//set starting number
     //increment number
 	//add ul digit to element
-
 }
 
 function comment(event) {
-	  event.preventDefault()
-      let listItem = commentDiv.appendChild(commentList)
+	  const listHolder = document.getElementById("list")
+      const commentList =  document.createElement("li")
       let commentText = document.getElementById("comment-input").value 
       let commentNode = document.createTextNode(commentText)
 
-      listItem.appendChild(commentNode)
+	  event.preventDefault()
+	  commentList.appendChild(commentNode)
+      listHolder.appendChild(commentList)
       document.getElementById("comment-form").reset()
 }
 
