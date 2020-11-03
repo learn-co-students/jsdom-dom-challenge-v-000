@@ -13,6 +13,11 @@ document.getElementById("heart").addEventListener("click", like)
 document.getElementById("pause").addEventListener("click", pause)
 document.getElementById("submit").addEventListener("click", comment)
 
+let likes = document.createElement("h1")
+const likeHolder = document.getElementsByClassName("likes")
+likes.innerHTML = 0
+document.body.appendChild(likes).setAttribute("id", "like")
+
 function setClock() {
  //console.log("innerHTML:" + counterDisplay.innerHTML)
   //your code to be executed after 1 second
@@ -21,6 +26,7 @@ function setClock() {
    if (counterDisplay.innerHTML < 100) {
      let newCounterDisplay = ++counterDisplay.innerHTML 
        counterDisplay.innerHTML = newCounterDisplay
+       likes.innerHTML = 0
        setClock()
      } else { 
     console.log("fin")
@@ -52,9 +58,14 @@ function pause() {
 }
 
 function like() {
+	debugger
 	//set starting number
     //increment number
 	//add ul digit to element
+    let approve = likes.innerHTML
+    let newlikeCounter = ++approve
+    likes.innerHTML = newlikeCounter
+
 }
 
 function comment(event) {
