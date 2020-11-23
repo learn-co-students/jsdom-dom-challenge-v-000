@@ -74,5 +74,4 @@ document.addEventListener("DOMContentLoaded", () => {
     function appendNewLike(like) {
         document.getElementById("likes").appendChild(like);
     }
-
 });
