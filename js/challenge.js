@@ -58,8 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const matchId = document.getElementById(`${counterInstance}-liked`);
 
         if ((matchId != 'undefined') && (matchId != null)) {
-            let times = document.querySelectorAll(`${counterInstance}-liked`).length; 
-            matchId.innerHTML = `${counterInstance} has been liked ${times+= 1} times`
+            let times = parseInt(matchId.innerText.split(" ")[4]) 
+            matchId.innerHTML = `${counterInstance} has been liked ${times+ 1} times`
         } else {
             const newLike = document.createElement("li");
             const newLikeId = newLike.id = `${counterInstance}-liked`;
