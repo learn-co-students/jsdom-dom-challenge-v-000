@@ -8,6 +8,10 @@
       color: white;
       display: table;
       padding: 10px;
+      font-size: 45px;
+    }
+    .list {
+      list-style: none;
     }
   </style>
 </head>
@@ -15,19 +19,19 @@
   <h1>
     Welcome to the DOM Challenge
   </h1>
-  <h1 id='counter'>
-    0
-  </h1>
-  <button id='minus' > ➖ </button>
-  <button id='plus' > ➕ </button>
-  <button id='heart' > ❤️ </button>
-  <button id='pause' > pause </button>
+  <section>
+    <p id='counter'>0</p>
+    <button id='minus'> ➖ </button>
+    <button id='plus'> ➕ </button>
+    <button id='heart'> ❤️ </button>
+    <button id='pause'> Pause </button>
+    <button id='reset'> Reset </button>
 
-  <ul class='likes'></ul>
-
-  <div>
+    <ul id='likes' class='list'></ul>
+  </section>
+  <section>
     <h3>Comments</h3>
-    <div id='list' class='comments'></div>
+    <div  id='comments' class='list'></div>
 
     <h3>Leave a comment</h3>
 
@@ -37,9 +41,9 @@
       <button id='submit'>submit</button>
     </form>
 
-  </div>
+  </section>
 
-  <script src="js/index.min.js"></script>
+  <!-- <script src="js/index.min.js"></script> -->
   <script src="js/challenge.js"></script>
 </body>
 </html>
