@@ -12,8 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
  
     var interval = setInterval(every1sec, 1000);
     var i = 0 
-    var heartCounter = 0
-    var t = 0
+    var heartCounter = 1
 
     function every1sec() { 
     secondsPassed.textContent = i++; 
@@ -51,11 +50,17 @@ document.addEventListener("DOMContentLoaded", function() {
       });
 
     like.addEventListener('click', function() {
-        heartCounter++
         i = secondsPassed.textContent
-        var li = document.createElement('li');
-        var node = document.createTextNode(`${i} was liked ${t} time(s).`)
-        li.appendChild(node);
-        likeList.appendChild(li);
-      })
+        var likedItem = document.getElementById(`${i}`)
+        if (likedItem) {
+            heartCounter++
+            likedItem.innerText = `${i} was liked ${heartCounter} times.`
+        } else {
+            var li = document.createElement('li');
+            li.setAttribute('id', `${i}`);
+            var node = document.createTextNode(`${i} was liked 1 time`)
+            li.appendChild(node);
+            likeList.appendChild(li);
+        }
+    })
    });
