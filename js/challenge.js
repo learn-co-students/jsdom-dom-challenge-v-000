@@ -20,20 +20,20 @@ document.addEventListener("DOMContentLoaded", function() {
     every1sec ();
 
     pause.addEventListener('click', function()  {
-    if (pause.innerText == 'pause') {
-        clearInterval(interval)
-        pause.innerText = 'resume' 
-        plus.disabled = true;
-        minus.disabled = true;
-        like.disabled = true;
-}   else {
-        interval = setInterval(every1sec, 1000);
-        pause.innerText = 'resume'
-        plus.disabled = false;
-        minus.disabled = false;
-        like.disabled = false;
-}
-
+        if (pause.innerText == 'pause') {
+            clearInterval(interval)
+            pause.innerText = 'resume' 
+            plus.disabled = true;
+            minus.disabled = true;
+            like.disabled = true;
+        } else {
+            interval = setInterval(every1sec, 1000);
+            var i = counter.innerText;
+            pause.innerText = 'pause'
+            plus.disabled = false;
+            minus.disabled = false;
+            like.disabled = false;
+        }
     })
 
    });
