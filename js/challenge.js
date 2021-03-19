@@ -1,20 +1,22 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const counter = document.getElementById('counter')
-    const plus = document.getElementById('+')
-    const minus = document.getElementById('-')
+    const secondsPassed = document.querySelector('h1#counter')
+    const plus = document.getElementById('plus')
     const pause = document.getElementById('pause')
-    const like = document.getElementById('<3')
-    const likes = document.getElementsByClassName('likes')[0]
+    const minus = document.getElementById('minus')
+    const like = document.getElementById('heart')
+    const likeList = document.querySelector('.likes')
     const submit = document.getElementById('submit')
-    const commentForm = document.getElementsByTagName('input')[0]
-    const comments = document.getElementById('list')
-    let gameRunning = true
+    const commentsList = document.getElementById('list')
+    const commentField = document.querySelector('input#comment-input')
+    
  
     var interval = setInterval(every1sec, 1000);
     var i = 0 
+    var heartCounter = 0
+    var t = 0
 
     function every1sec() { 
-    counter.innerText = i++; 
+    secondsPassed.textContent = i++; 
     }
 
     every1sec ();
@@ -26,14 +28,34 @@ document.addEventListener("DOMContentLoaded", function() {
             plus.disabled = true;
             minus.disabled = true;
             like.disabled = true;
+            submit.disabled = true;
         } else {
             interval = setInterval(every1sec, 1000);
-            var i = counter.innerText;
+            var i = secondsPassed;
             pause.innerText = 'pause'
             plus.disabled = false;
             minus.disabled = false;
             like.disabled = false;
+            submit.disabled = false;
         }
     })
 
+    submit.addEventListener('click', function(event){
+        event.preventDefault();
+        var comment = commentField.value
+        var p = document.createElement('p');
+        var node = document.createTextNode(comment)
+        p.appendChild(node);
+        commentsList.appendChild(p);
+        commentField.value = ''
+      });
+
+    like.addEventListener('click', function() {
+        heartCounter++
+        i = secondsPassed.textContent
+        var li = document.createElement('li');
+        var node = document.createTextNode(`${i} was liked ${t} time(s).`)
+        li.appendChild(node);
+        likeList.appendChild(li);
+      })
    });
