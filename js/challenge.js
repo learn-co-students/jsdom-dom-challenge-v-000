@@ -5,12 +5,15 @@ let plus = document.getElementById('plus');
 let heart = document.getElementById('heart');
 let pause = document.getElementById('pause');
 let likes = document.getElementsByClassName('likes');
+let likesCounter = []
 let comments = document.getElementById('list');
+let submit = document.getElementById('submit');
 let counterInt = parseInt(counter.innerText, 10)
 
 minus.addEventListener('click', deduct1);
 plus.addEventListener('click', increase1);
 pause.addEventListener('click', controlTheCounter);
+heart.addEventListener('click', userLiked);
 
 function deduct1() {
     counterInt -=1;
@@ -25,15 +28,29 @@ function increase1() {
 }
 
 function controlTheCounter() {
-    if (pause.value === 'pause') {
-        pause.value = 'resume';
+    if (pause.innerText === 'pause') {
+        pause.innerText = 'resume';
         minus.disabled = true;
         plus.disabled = true;
         heart.disabled = true;
+        submit.disabled = true;
       } else {
-        pause.value = 'pause';
+        pause.innerText = 'pause';
         minus.disabled = false;
         plus.disabled = false;
         heart.disabled = false;
+        submit.disabled = false;
       }
+}
+function userLiked() {
+    let currentVal = 0;
+    if (likesCounter[(counterInt-1)] = NaN) {
+        console.log(`I'm set to NaN`);
+        currentVal = 1; }
+        else { currentVal = likesCounter[(counterInt-1)];
+            console.log(`currentVal is now ${currentVal}`);
+    }; 
+    likesCounter[(counterInt-1)] = currentVal + 1;
+    console.log(`The number ${counterInt} was liked ${currentVal} times.`);
+
 }
