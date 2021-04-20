@@ -1,19 +1,23 @@
 
-let counter = document.getElementById('counter');
-let minus = document.getElementById('minus');
-let plus = document.getElementById('plus');
-let heart = document.getElementById('heart');
-let pause = document.getElementById('pause');
-let likes = document.getElementsByClassName('likes')[0];
+const counter = document.getElementById('counter');
+const minus = document.getElementById('minus');
+const plus = document.getElementById('plus');
+const heart = document.getElementById('heart');
+const pause = document.getElementById('pause');
+const likes = document.getElementsByClassName('likes')[0];
 let likesCounter = []
-let comments = document.getElementById('list');
-let submit = document.getElementById('submit');
+const comments = document.getElementById('list');
+const submitBtn = document.getElementById('submit');
+const form = document.getElementById('comment-form');
 let counterInt = parseInt(counter.innerText, 10)
+let timerSwitch = true;
 
 minus.addEventListener('click', deduct1);
 plus.addEventListener('click', increase1);
 pause.addEventListener('click', controlTheCounter);
 heart.addEventListener('click', userLiked);
+form.addEventListener('submit', handleSubmit);
+submitBtn.addEventListener('click', addUserComment);
 
 function deduct1() {
     counterInt -=1;
@@ -39,6 +43,8 @@ function controlTheCounter() {
         heart.disabled = false;
         submit.disabled = false;
       }
+      timerSwitch = (!timerSwitch);
+      checkTimerSwitch();
 }
 function userLiked() {
     function removeAllChildNodes(parent) {
@@ -54,13 +60,52 @@ function userLiked() {
         else { currentVal = 1;
     }; 
     likesCounter[(counterInt)] = currentVal;
-    console.log(`The number ${counterInt} was liked ${likesCounter[(counterInt)]} times.`);
     let i;
     for (i = 0; i < likesCounter.length; i++) {
        if (likesCounter[(i)] > 0) {
-        let likemsg = document.createElement("li");                 
-        likemsg.innerHTML = `The number ${counterInt} was liked ${likesCounter[(counterInt)]} times.`;                
+        let likemsg = document.createElement("li");  
+        likemsg.innerText = `The number ${i} was liked ${likesCounter[(i)]} times.`;                
         likes.appendChild(likemsg); 
        };
     }
 }
+
+function addUserComment() {
+    
+    let userComment = document.getElementById('comment-input').value
+    el = document.createElement('p');
+    el.innerText = userComment;
+    comments.appendChild(el);
+    form.reset();
+}
+
+function handleSubmit(event) {
+    event.preventDefault();
+}
+
+let myVar; 
+
+ function myFunction() {
+        myVar = setInterval(alertFunc, 1000);
+  }
+  
+  
+  function alertFunc() {
+        counterInt += 1;
+        counter.innerText = counterInt;
+  }
+
+ function myStopFunction() {
+     clearInterval(myVar);
+    }
+
+function checkTimerSwitch() {
+    if (timerSwitch) {
+        myFunction();
+    }
+    else {
+        myStopFunction();
+    }
+}
+
+ myFunction();
