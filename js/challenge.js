@@ -44,13 +44,13 @@ function controlTheCounter() {
 }
 function userLiked() {
     let currentVal = 0;
-    if (likesCounter[(counterInt-1)] = NaN) {
-        console.log(`I'm set to NaN`);
-        currentVal = 1; }
-        else { currentVal = likesCounter[(counterInt-1)];
-            console.log(`currentVal is now ${currentVal}`);
+    if (likesCounter[(counterInt)] >= 0) {
+        console.log(`The likesCounter is pointing to ${counterInt}`);
+        currentVal = likesCounter[(counterInt)] + 1; }
+        else { currentVal = 1;
+            console.log(`currentVal is now ${currentVal} and likesCounter/counterInt is set to ${likesCounter[(counterInt)]}`);
     }; 
-    likesCounter[(counterInt-1)] = currentVal + 1;
-    console.log(`The number ${counterInt} was liked ${currentVal} times.`);
+    likesCounter[(counterInt)] = currentVal;
+    console.log(`The number ${counterInt} was liked ${likesCounter[(counterInt)]} times.`);
 
 }
