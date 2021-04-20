@@ -4,7 +4,7 @@ let minus = document.getElementById('minus');
 let plus = document.getElementById('plus');
 let heart = document.getElementById('heart');
 let pause = document.getElementById('pause');
-let likes = document.getElementsByClassName('likes');
+let likes = document.getElementsByClassName('likes')[0];
 let likesCounter = []
 let comments = document.getElementById('list');
 let submit = document.getElementById('submit');
@@ -17,14 +17,12 @@ heart.addEventListener('click', userLiked);
 
 function deduct1() {
     counterInt -=1;
-    console.log('Decreased by 1');
     counter.innerText = counterInt
 }
 
 function increase1() {
         counterInt +=1;
         counter.innerText = counterInt
-        console.log('Increased by 1');
 }
 
 function controlTheCounter() {
@@ -43,14 +41,26 @@ function controlTheCounter() {
       }
 }
 function userLiked() {
+    function removeAllChildNodes(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+    }
+    removeAllChildNodes(likes);
+
     let currentVal = 0;
     if (likesCounter[(counterInt)] >= 0) {
-        console.log(`The likesCounter is pointing to ${counterInt}`);
         currentVal = likesCounter[(counterInt)] + 1; }
         else { currentVal = 1;
-            console.log(`currentVal is now ${currentVal} and likesCounter/counterInt is set to ${likesCounter[(counterInt)]}`);
     }; 
     likesCounter[(counterInt)] = currentVal;
     console.log(`The number ${counterInt} was liked ${likesCounter[(counterInt)]} times.`);
-
+    let i;
+    for (i = 0; i < likesCounter.length; i++) {
+       if (likesCounter[(i)] > 0) {
+        let likemsg = document.createElement("li");                 
+        likemsg.innerHTML = `The number ${counterInt} was liked ${likesCounter[(counterInt)]} times.`;                
+        likes.appendChild(likemsg); 
+       };
+    }
 }
