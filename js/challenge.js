@@ -1,47 +1,60 @@
+function timer(){
+  return setInterval(increment, 1000);
+};
+interval = timer();
+let trigger = 0
 const counter = document.getElementById('counter');
-
-document.addEventListener("DOMContentLoaded", function() {
-  console.log("The DOM has loaded");
-});
-
-  var playing=!0
-    timer = function(){
-    return setInterval(function(){
-      var a = document.getElementById("counter"), b = parseInt(a.innerText);
-      a.innerText=b+1},1e3)
-    },
-    interval = timer();
-
-
-    let pause = document.getElementById('pause');
-    pause.addEventListener('click', function(){
-      playing?(playing=!1,clearInterval(interval),this.innerText="resume"):(playing=!0,interval=timer(),
-      this.innerText="pause"),[].concat(_toConsumableArray(document.getElementsByTagName("button"))).forEach(function(a){"pause"!==a.id&&(a.disabled=!playing)}
-    )});
-
-
 const plus = document.getElementById('plus');
-plus.addEventListener('click', function(event) {
-  let parsed = parseInt(counter.innerText);
-  counter.innerText = parsed + 1;
-});
-
 const minus = document.getElementById('minus');
-minus.addEventListener('click', function(e) {
-  let parsed = parseInt(counter.innerText);
-  counter.innerText = parsed - 1;
+const heart = document.getElementById('heart');
+const pause = document.getElementById('pause');
+const commentForm = document.getElementById('comment-form');
+
+document.addEventListener("DOMContentLoaded", () => {
+  minus.addEventListener("click", subtract);
+  plus.addEventListener('click', increment);
+  heart.addEventListener("click", likes );
+  pause.addEventListener('click',function(e){
+    if (trigger == 0){
+      clearInterval(interval);
+      trigger = 1
+    } else if (trigger == 1){
+      interval = timer();
+      trigger = 0
+    };
+    
+  });
+  commentForm.addEventListener('submit', function addComment(e){
+    e.preventDefault();s
+    let comment = document.createElement('li');
+    comment.innerText = document.getElementById('comment-input').value;
+    document.getElementById('list').appendChild(comment);
+  });
 });
 
 
-const submit = document.getElementById('comment-form').querySelector('button');
-const commentsList = document.getElementById('list');
-const comment = document.getElementById('comment-form').querySelector('input');
-submit.addEventListener('click', function(e) {
-  e.preventDefault()
-  const newComment = document.createElement('li');
-  commentsList.appendChild(newComment);
-  newComment.innerText = comment.value;
-});
+function increment(){
+  counter.innerText = parseInt(counter.innerText, 10) + 1
+};
 
+function timer(){
+  return setInterval(increment, 1000);
+};
 
+function subtract(){
+  counter.innerText = parseInt(counter.innerText, 10) - 1
+};
 
+function likes(){
+  const likesUl = document.querySelector('.likes');
+  let n = counter.innerText;
+  const like = document.createElement('li')
+  like.innerText = ` ${n} has been liked times`;
+  likesUl.appendChild(like);
+};
+
+function addComment(){
+  let comment = document.createElement('li');
+  comment.innerText = document.getElementById('comment-input').value;
+  document.getElementById('list').appendChild(comment);
+};
